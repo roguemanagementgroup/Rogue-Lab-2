@@ -12,8 +12,8 @@ This is not an incident-response service, an endpoint-detection product, or a co
 
 ## Planned phases
 
-1. **Foundation (current):** governance, authorization boundaries, privacy controls, evidence handling, lifecycle, and CI safeguards.
-2. **Assessment design:** approved objectives, scoping worksheets, synthetic fixtures, and non-destructive collection specifications.
+1. **Foundation:** governance, authorization boundaries, privacy controls, evidence handling, lifecycle, and CI safeguards.
+2. **Assessment design (current):** approved objectives, scoping worksheets, synthetic fixtures, and non-destructive collection specifications.
 3. **Stabilization planning:** prioritized remediation guidance, change-control artifacts, and rollback-aware verification plans.
 4. **Portfolio presentation:** sanitized example reports, decision records, and documentation review.
 
@@ -24,6 +24,10 @@ Collect only what the approved question requires, retain it only for the agreed 
 ## Assessment approach
 
 The [assessment lifecycle](docs/nist-aligned-assessment-lifecycle.md) is informed by relevant NIST concepts, including risk-based planning, evidence integrity, and recovery-oriented validation. It is an educational outline and **does not claim NIST certification, validation, or formal compliance**.
+
+## Phase 2 assessment design
+
+The [initial engagement runbook](docs/initial-engagement-assessment-plan.md) defines authorization gates, preflight checks, and stop conditions. The Windows posture design is limited to low-risk local metadata and has a [collection specification](docs/windows-posture-collection-specification.md), an [asset inventory schema](docs/asset-inventory-schema.md), and a [synthetic normalized fixture](fixtures/windows-posture.synthetic.json). The optional collection script requires an explicit authorization switch and makes no configuration changes.
 
 ## Repository conventions
 
