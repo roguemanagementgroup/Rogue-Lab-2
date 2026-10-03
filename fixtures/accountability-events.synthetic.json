@@ -1,0 +1,77 @@
+{
+  "description": "Synthetic usage events for testing the accountability reporter. Every value is fabricated; no real session is represented.",
+  "events": [
+    {
+      "timestamp": "2026-01-15T10:00:00Z",
+      "model": "synthetic-model-a",
+      "phase": "phase-1-foundation",
+      "input_tokens": 42000,
+      "output_tokens": 1200,
+      "cache_read_tokens": 38000,
+      "cache_write_tokens": 1500,
+      "reasoning_tokens": 300,
+      "nano_aiu": 1400000000,
+      "duration_ms": 4200
+    },
+    {
+      "timestamp": "2026-01-15T10:04:00Z",
+      "model": "synthetic-model-a",
+      "phase": "phase-1-foundation",
+      "input_tokens": 44000,
+      "output_tokens": 2400,
+      "cache_read_tokens": 41000,
+      "cache_write_tokens": 900,
+      "reasoning_tokens": 700,
+      "nano_aiu": 2100000000,
+      "duration_ms": 6100
+    },
+    {
+      "timestamp": "2026-01-15T11:00:00Z",
+      "model": "synthetic-model-a",
+      "phase": "phase-2-assessment-design",
+      "input_tokens": 51000,
+      "output_tokens": 3100,
+      "cache_read_tokens": 48000,
+      "cache_write_tokens": 2200,
+      "reasoning_tokens": 900,
+      "nano_aiu": 2700000000,
+      "duration_ms": 8400
+    },
+    {
+      "timestamp": "2026-01-15T11:20:00Z",
+      "model": "synthetic-model-b",
+      "phase": "phase-2-assessment-design",
+      "input_tokens": 30000,
+      "output_tokens": 900,
+      "cache_read_tokens": 25000,
+      "cache_write_tokens": 0,
+      "reasoning_tokens": 200,
+      "nano_aiu": 1600000000,
+      "duration_ms": 9000
+    },
+    {
+      "timestamp": "2026-01-15T12:00:00Z",
+      "model": "synthetic-model-b",
+      "phase": "phase-3-stabilization-planning",
+      "input_tokens": 33000,
+      "output_tokens": 1500,
+      "cache_read_tokens": 31000,
+      "cache_write_tokens": 800,
+      "reasoning_tokens": 400,
+      "nano_aiu": 1900000000,
+      "duration_ms": 7200
+    },
+    {
+      "timestamp": "2026-01-15T12:30:00Z",
+      "model": "synthetic-model-b",
+      "phase": "phase-3-stabilization-planning",
+      "input_tokens": 200000,
+      "output_tokens": 6000,
+      "cache_read_tokens": 10000,
+      "cache_write_tokens": 3000,
+      "reasoning_tokens": 2500,
+      "nano_aiu": 68000000000,
+      "duration_ms": 150000
+    }
+  ]
+}

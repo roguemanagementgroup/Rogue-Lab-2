@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Synthetic Windows posture summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format_version",
+    "fixture_kind",
+    "asset_reference",
+    "collection_mode",
+    "os",
+    "defender",
+    "bitlocker",
+    "firewall",
+    "updates"
+  ],
+  "properties": {
+    "format_version": { "const": "1.0" },
+    "fixture_kind": { "const": "synthetic" },
+    "asset_reference": { "type": "string", "pattern": "^SYNTH-ASSET-[0-9]{3}$" },
+    "collection_mode": { "const": "synthetic-fixture" },
+    "os": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["product_family", "version", "build"],
+      "properties": {
+        "product_family": { "const": "Windows" },
+        "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+$" },
+        "build": { "type": "string", "pattern": "^[0-9]+$" }
+      }
+    },
+    "defender": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["antivirus", "real_time_protection", "service"],
+      "properties": {
+        "antivirus": { "$ref": "#/$defs/state" },
+        "real_time_protection": { "$ref": "#/$defs/state" },
+        "service": { "$ref": "#/$defs/state" }
+      }
+    },
+    "bitlocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["system_volume_protection", "protected_volume_count"],
+      "properties": {
+        "system_volume_protection": { "$ref": "#/$defs/state" },
+        "protected_volume_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "firewall": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["domain", "private", "public"],
+      "properties": {
+        "domain": { "$ref": "#/$defs/state" },
+        "private": { "$ref": "#/$defs/state" },
+        "public": { "$ref": "#/$defs/state" }
+      }
+    },
+    "updates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["latest_install_date", "currentness"],
+      "properties": {
+        "latest_install_date": {
+          "oneOf": [
+            { "type": "string", "format": "date" },
+            { "const": "unavailable" }
+          ]
+        },
+        "currentness": { "const": "not-determined" }
+      }
+    }
+  },
+  "$defs": {
+    "state": { "enum": ["enabled", "disabled", "unavailable"] }
+  }
+}
