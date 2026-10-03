@@ -37,7 +37,7 @@ The project also demonstrates measured AI-work governance: [agent accountability
 
 ## Authorization and development record
 
-The [RogueOS Builder's Permit](docs/rogueos-builders-permit.md) is a downloadable, Google Docs-compatible internal authorization record. It establishes the owner-approved defensive scope, human review, data boundaries, and change-control requirements for this lab; it is not legal authority to access a system. The [contemporaneous development register](docs/contemporaneous-development-register.md) records the completed repository phases, review evidence, and known follow-up actions.
+The [RogueOS Builder's Permit](docs/rogueos-builders-permit.md) is an internal authorization record, with a [downloadable Word copy](docs/RogueOS-Builders-Permit.docx) that can be uploaded to Google Docs. It establishes the owner-approved defensive scope, human review, data boundaries, and change-control requirements for this lab; it is not legal authority to access a system. The [contemporaneous development register](docs/contemporaneous-development-register.md) records the completed repository phases, review evidence, and known follow-up actions.
 
 ## Repository conventions
 
