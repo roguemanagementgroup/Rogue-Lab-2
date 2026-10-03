@@ -6,7 +6,7 @@ Rogue-Lab-2 is a portfolio repository. It must not contain operational client da
 
 ## Reporting a concern
 
-Do not open a public issue or commit sensitive material. Report a suspected secret, sensitive artifact, unsafe instruction, or repository vulnerability privately to the repository owner through GitHub's private reporting channel when enabled, or through the contact method designated by the repository owner.
+Do not open a public issue or commit sensitive material. Report a suspected secret, sensitive artifact, unsafe instruction, or repository vulnerability to [stephen@roguemgmtgroup.com](mailto:stephen@roguemgmtgroup.com).
 
 Include only the minimum information needed to locate the concern. Do not attach secrets, raw logs, images, or client identifiers. If a credential may have been exposed, revoke or rotate it through the owning system immediately; repository cleanup alone is not sufficient.
 

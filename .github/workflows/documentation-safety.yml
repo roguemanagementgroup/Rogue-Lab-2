@@ -76,8 +76,17 @@ jobs:
             'gh[pousr]_[A-Za-z0-9]{36,}'
           )
           for pattern in "${patterns[@]}"; do
-            if git grep -nEI -- "$pattern"; then
+            set +e
+            git grep -q -EI -- "$pattern"
+            scan_status=$?
+            set -e
+
+            if [ "$scan_status" -eq 0 ]; then
               echo "Potential secret detected; remove it and rotate the source credential if applicable." >&2
               exit 1
+            fi
+            if [ "$scan_status" -ne 1 ]; then
+              echo "Secret scan failed with status $scan_status." >&2
+              exit "$scan_status"
             fi
           done

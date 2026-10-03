@@ -36,8 +36,9 @@
 | Review | Result | Follow-up |
 |---|---|---|
 | Repository visibility | Confirmed private. | Review collaborators and access periodically. |
-| Security review of current branch | No security vulnerabilities or exposed sensitive artifacts identified. | Maintain review before merge. |
+| Security review of current branch | Review identified that secret-match output could expose a matched value in GitHub Actions logs. The workflow was corrected to detect matches quietly, and no exposed sensitive artifacts were identified. | Review the correction before merge; rotate any credential if it was ever committed elsewhere. |
 | Secret-pattern scan | No match for the workflow's configured private-key and common-token patterns. | Pattern scanning is not a substitute for credential rotation or organization-level secret scanning. |
+| Vulnerability reporting route | GitHub private vulnerability reporting could not be enabled for this repository configuration. | Direct private reports to `stephen@roguemgmtgroup.com`; do not use public issues. |
 | Branch protection query | Branch-protection API response indicated this private repository's current GitHub plan does not support that feature. | Use pull-request review discipline; enable branch protection if plan eligibility changes. |
 | Forking setting | Private-repository forking is currently enabled. | Owner should decide whether private forks are necessary; disable them if not. |
 
