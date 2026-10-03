@@ -13,8 +13,8 @@ This is not an incident-response service, an endpoint-detection product, or a co
 ## Planned phases
 
 1. **Foundation:** governance, authorization boundaries, privacy controls, evidence handling, lifecycle, and CI safeguards.
-2. **Assessment design (current):** approved objectives, scoping worksheets, synthetic fixtures, and non-destructive collection specifications.
-3. **Stabilization planning:** prioritized remediation guidance, change-control artifacts, and rollback-aware verification plans.
+2. **Assessment design:** approved objectives, scoping worksheets, synthetic fixtures, and non-destructive collection specifications.
+3. **Stabilization planning (current):** prioritized remediation guidance, change-control artifacts, rollback-aware verification plans, and agent accountability reporting.
 4. **Portfolio presentation:** sanitized example reports, decision records, and documentation review.
 
 ## Evidence minimization
@@ -28,6 +28,12 @@ The [assessment lifecycle](docs/nist-aligned-assessment-lifecycle.md) is informe
 ## Phase 2 assessment design
 
 The [initial engagement runbook](docs/initial-engagement-assessment-plan.md) defines authorization gates, preflight checks, and stop conditions. The Windows posture design is limited to low-risk local metadata and has a [collection specification](docs/windows-posture-collection-specification.md), an [asset inventory schema](docs/asset-inventory-schema.md), and a [synthetic normalized fixture](fixtures/windows-posture.synthetic.json). The optional collection script requires an explicit authorization switch and makes no configuration changes.
+
+## Phase 3 stabilization planning and accountability
+
+The [stabilization planning guide](docs/stabilization-planning-guide.md) converts posture observations into prioritized, reversible change proposals, supported by a [change-control and rollback template](docs/change-control-and-rollback-template.md), a [verification plan template](docs/stabilization-verification-plan-template.md), and a fully synthetic [worked example](docs/synthetic-stabilization-example.md). Planning artifacts only - this repository never executes changes.
+
+The project also demonstrates measured AI-work governance: [agent accountability and compute governance](docs/agent-accountability-and-compute-governance.md) documents how recorded usage telemetry is turned into plain-language, budget-gated reports by a small tested tool ([tools/agent_accountability.py](tools/agent_accountability.py)).
 
 ## Repository conventions
 
