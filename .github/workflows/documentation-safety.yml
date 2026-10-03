@@ -1,0 +1,83 @@
+name: Documentation safety
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate-markdown:
+    name: Validate Markdown references
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check local Markdown links
+        shell: python
+        run: |
+          import pathlib
+          import re
+          import sys
+          from urllib.parse import unquote
+
+          root = pathlib.Path.cwd()
+          failures = []
+          link_pattern = re.compile(r'(?<!!)\[[^\]]*\]\(([^)\s]+)(?:\s+["\'][^)]*["\'])?\)')
+
+          for markdown_file in root.rglob("*.md"):
+              if ".git" in markdown_file.parts:
+                  continue
+              text = markdown_file.read_text(encoding="utf-8")
+              for target in link_pattern.findall(text):
+                  if target.startswith(("#", "http://", "https://", "mailto:")):
+                      continue
+                  path = unquote(target.split("#", 1)[0].strip("<>"))
+                  if path and not (markdown_file.parent / path).resolve().is_file():
+                      failures.append(f"{markdown_file.relative_to(root)}: missing link target {target}")
+
+          if failures:
+              print("\n".join(failures))
+              sys.exit(1)
+      - name: Check Markdown headings
+        shell: python
+        run: |
+          import pathlib
+          import sys
+
+          failures = []
+          for markdown_file in pathlib.Path.cwd().rglob("*.md"):
+              if ".git" in markdown_file.parts:
+                  continue
+              if not any(line.startswith("# ") for line in markdown_file.read_text(encoding="utf-8").splitlines()):
+                  failures.append(f"{markdown_file}: missing level-one heading")
+
+          if failures:
+              print("\n".join(failures))
+              sys.exit(1)
+
+  scan-for-secrets:
+    name: Scan tracked content for common secrets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reject private keys and common token formats
+        shell: bash
+        run: |
+          set -euo pipefail
+          patterns=(
+            '-----BEGIN (RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----'
+            'AKIA[0-9A-Z]{16}'
+            'github_pat_[A-Za-z0-9_]{20,}'
+            'gh[pousr]_[A-Za-z0-9]{36,}'
+          )
+          for pattern in "${patterns[@]}"; do
+            if git grep -nEI -- "$pattern"; then
+              echo "Potential secret detected; remove it and rotate the source credential if applicable." >&2
+              exit 1
+            fi
+          done
