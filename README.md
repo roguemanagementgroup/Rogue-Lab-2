@@ -35,6 +35,10 @@ The [stabilization planning guide](docs/stabilization-planning-guide.md) convert
 
 The project also demonstrates measured AI-work governance: [agent accountability and compute governance](docs/agent-accountability-and-compute-governance.md) documents how recorded usage telemetry is turned into plain-language, budget-gated reports by a small tested tool ([tools/agent_accountability.py](tools/agent_accountability.py)).
 
+## Authorization and development record
+
+The [RogueOS Builder's Permit](docs/rogueos-builders-permit.md) is a downloadable, Google Docs-compatible internal authorization record. It establishes the owner-approved defensive scope, human review, data boundaries, and change-control requirements for this lab; it is not legal authority to access a system. The [contemporaneous development register](docs/contemporaneous-development-register.md) records the completed repository phases, review evidence, and known follow-up actions.
+
 ## Repository conventions
 
 - Keep fixtures synthetic or demonstrably redacted.
