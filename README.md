@@ -52,7 +52,7 @@ Source code in this repository is licensed under the [Apache License 2.0](LICENS
 
 ## Portfolio context
 
-This private repository is intended to show recruiters and reviewers how an endpoint-security practitioner turns a scoped first visit into safe, defensible, and human-readable work products. A suitable repository description is: **“Sanitized endpoint security assessment and stabilization portfolio lab.”** Suggested topics: `cybersecurity`, `endpoint-security`, `security-assessment`, `incident-readiness`, `privacy-by-design`, and `portfolio`.
+This repository is intended to show recruiters and reviewers how an endpoint-security practitioner turns a scoped first visit into safe, defensible, and human-readable work products.
 
 ## Contributing
 
